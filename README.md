@@ -1,4 +1,5 @@
 # Installation
 
-    - php artisan storage:link
+    -  php artisan cc_shop:install
+
 
