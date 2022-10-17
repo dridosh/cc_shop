@@ -14,13 +14,6 @@
     */
 
     Route::get('/', function () {
-        logger()?->channel('telegram')->debug('Hello World!!!');
-        logger()?->channel('telegram')->info('Hello World!!!');
-        logger()?->channel('telegram')->alert('Hello World!!!');
-        logger()?->channel('telegram')->critical('Hello World!!!');
-        logger()?->channel('telegram')->emergency('Hello World!!!');
-        logger()?->channel('telegram')->error('Hello World!!!');
-        logger()?->info('просто лог');
         return view('welcome');
     }
     );
