@@ -1,2 +1,2 @@
 import './bootstrap';
-import './mail';
+import './main';

@@ -1,40 +1,49 @@
 <?php
 
-namespace App\Providers;
+    namespace App\Providers;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\PDO\Connection;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\ServiceProvider;
-use PhpParser\Lexer\TokenEmulator\FlexibleDocStringEmulator;
+    use App\Http\Kernel;
+    use Carbon\CarbonInterval;
+    use Illuminate\Database\Connection;
+    use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
-{
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+    class AppServiceProvider extends ServiceProvider
     {
-        //
-    }
+        /**
+         * Register any application services.
+         *
+         * @return void
+         */
+        public function register(): void
+        {
+            //
+        }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        Model::preventLazyLoading(!app()->isProduction());
-        Model::preventSilentlyDiscardingAttributes(!app()->isProduction());
+        /**
+         * Bootstrap any application services.
+         *
+         * @return void
+         */
+        public function boot(): void
+        {
+            Model::preventLazyLoading(!app()->isProduction());
+            Model::preventSilentlyDiscardingAttributes(!app()->isProduction());
 
-//        DB::whenQueryingForLongerThan(500, function (Connection $connection) {
-//            // Notify development team...
-//            //TODO сделать логирование в телеграм
-//
-//        });
-//        //TODO
+            DB::whenQueryingForLongerThan(
+                500,
+                static function (Connection $connection) {
+                    // Notify development team...
+                    //TODO сделать логирование в телеграм
+
+                }
+            );
+            $kernel = app(Kernel::class);
+            $kernel->whenRequestLifecycleIsLongerThan(
+                CarbonInterval::seconds(4),
+                function () {
+                }
+            );
+        }
     }
-}
