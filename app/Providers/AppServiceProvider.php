@@ -18,7 +18,6 @@
          */
         public function register(): void
         {
-            //
         }
 
         /**
@@ -58,13 +57,24 @@
               https://laravel.com/docs/9.x/database#monitoring-cumulative-query-time
 
               */
-            DB::whenQueryingForLongerThan(500, static function (Connection $connection) {
+
+//            метод имеет проблемы - если его использовать в очетредях, то при срабатывании возникает бесконечный цикл
+            DB::whenQueryingForLongerThan(900, static function (Connection $connection) {
                 // Notify development team...
                 logger()
                     ?->channel('telegram')
-                    ->debug('whenQueryingForLongerThan:'.$connection->query()->toSql());
+                    ->debug('whenQueryingForLongerThan:'.$connection->totalQueryDuration());
             }
             );
+
+            DB::listen(static function ($query) {
+                if ($query->time > 100) //           dump($query->time, $query->sql, $query->bindings);
+                {
+                    logger()
+                        ?->channel('telegram')
+                        ->debug('query longer then 1s:'.$query->sql, [$query->bindings, $query->time]);
+                }
+            });
 
 
             $kernel = app(Kernel::class);

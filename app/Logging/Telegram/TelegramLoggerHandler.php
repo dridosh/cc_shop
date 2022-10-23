@@ -20,7 +20,7 @@
             $level = Logger::toMonologLevel($config['level']);
             parent::__construct($level);
             $this->token = $config['token'];
-            $this->chat_id = $config['chat_id'];
+            $this->chat_id = (int) $config['chat_id'];
         }
 
         protected function write(array $record): void
