@@ -2,6 +2,7 @@
 
     namespace App\Models;
 
+    use App\Traits\Models\HasSlug;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,6 +11,7 @@
     class Product extends Model
     {
         use HasFactory;
+        use HasSlug;
 
         protected $fillable = [
             'title',
@@ -17,17 +19,7 @@
             'brand_id',
             'price',
             'thumbnail',
-
         ];
-
-        protected static function boot(): void
-        {
-            parent::boot();
-            //TODO исправить дублирование
-            static::creating(function (Product $product) {
-                $product->slug = $product->slug ?? str($product->title)->slug();
-            });
-        }
 
         public function brand(): BelongsTo
         {

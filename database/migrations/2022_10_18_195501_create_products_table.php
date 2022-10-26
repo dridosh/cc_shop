@@ -15,7 +15,7 @@
                 $table->id();
 
                 $table->string('title');
-                $table->string('slug');
+                $table->string('slug')->unique();
                 $table->string('thumbnail')->nullable();
                 $table->unsignedInteger('price')->default(0);
                 $table->timestamps();
