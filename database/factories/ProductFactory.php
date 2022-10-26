@@ -18,8 +18,12 @@
             return [
                 'title'     => ucfirst($this->faker->words(3, true)),
                 'brand_id'  => Brand::query()->inRandomOrder()->value('id'),
-                'thumbnail' => $this->faker->loremflickr('img', 500, 500, 'car'),
-                'price'     => $this->faker->numberBetween(1000, 200000),
+                //                'thumbnail' => $this->faker->loremflickr('img', 500, 500, 'car'), // реализация через сервис loremflickr.com
+                'thumbnail' => $this->faker->file('tests/Fixtures/products',
+                    storage_path('/app/public/images/products'), false), //выбор случайного файла кортинки
+
+
+                'price' => $this->faker->numberBetween(1000, 200000),
 
             ];
         }
