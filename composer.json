@@ -14,8 +14,7 @@
     "laravel/sanctum": "^3.0",
     "laravel/telescope": "^4.9",
     "laravel/tinker": "^2.7",
-    "sentry/sentry-laravel": "^2.14",
-    "ext-csprng": "*"
+    "sentry/sentry-laravel": "^2.14"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",

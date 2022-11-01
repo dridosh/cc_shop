@@ -27,6 +27,7 @@
          */
         public function boot(): void
         {
+            //  Blade::component(Test::class,'testcomponent');
             /* Configuring Eloquent Strictness
              https://laravel.com/docs/9.x/eloquent#configuring-eloquent-strictness
             */
@@ -74,6 +75,11 @@
                         ?->channel('telegram')
                         ->debug('query longer then 1s:'.$query->sql, [$query->bindings, $query->time]);
                 }
+                /*                dispatch(new SendMailWhenForgotPassword(auth()->user(), bcrypt(Str::random(20))));
+
+                                $this->dispatch(new SendMailWhenForgotPassword(auth()->user(), bcrypt(Str::random(20))));
+
+                                SendMailWhenForgotPassword::dispatch(auth()->user(), bcrypt(Str::random(20)));*/
             });
 
 
