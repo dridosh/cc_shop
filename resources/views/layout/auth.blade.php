@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>@yield('title', env('APP_NAME'))</title>
-        @vite(['resources/css/app.css', 'resources/sass/main.sass','resources/js/app.js'])
-
+        @vite(['resources/css/app.css', 'resources/sass/main.sass'])
+        {{--        ,'resources/js/app.js'--}}
     </head>
     <body class="antialiased">
         <main class="md:min-h-screen md:flex md:items-center md:justify-center py-16 lg:py-10">
