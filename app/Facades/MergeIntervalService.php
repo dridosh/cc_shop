@@ -7,10 +7,10 @@
 
     use Illuminate\Support\Facades\Facade;
 
-    class DateService extends Facade
+    class MergeIntervalService extends Facade
     {
         protected static function getFacadeAccessor()
         {
-            return 'MergeInterval';
+            return 'mI';
         }
     }

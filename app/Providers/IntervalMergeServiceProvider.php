@@ -7,11 +7,11 @@
     use App\Services\LogicTasks\MergeInterval;
     use Illuminate\Support\ServiceProvider;
 
-    class DateCheckServiceProvider extends ServiceProvider
+    class IntervalMergeServiceProvider extends ServiceProvider
     {
         public function register(): void
         {
-            $this->app->bind('dateCheck',MergeInterval::class);
+            $this->app->bind('mI', MergeInterval::class);
         }
 
 
