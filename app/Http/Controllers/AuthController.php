@@ -46,11 +46,11 @@
 
         public function store(SignUpFormRequest $request): RedirectResponse
         {
-            $user = User::query()->create(([
+            $user = User::query()->create([
                 'name'     => $request->get('name'),
                 'email'    => $request->get('email'),
                 'password' => bcrypt($request->get('password')),
-            ]));
+            ]);
 
             event(new Registered($user));
 

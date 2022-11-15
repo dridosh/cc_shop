@@ -1,5 +1,7 @@
 <?php
 
+    use App\Facades\MergeIntervalService;
+    use App\Providers\IntervalMergeServiceProvider;
     use App\Providers\ViewServiceProvider;
     use Illuminate\Support\Facades\Facade;
 
@@ -199,6 +201,7 @@
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\FakerServiceProvider::class,
         ViewServiceProvider::class,
+        IntervalMergeServiceProvider::class,
     ],
 
     /*
@@ -214,6 +217,7 @@
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'MergeIntervalService' => MergeIntervalService::class,
     ])->toArray(),
 
 ];
