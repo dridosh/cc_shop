@@ -8,6 +8,7 @@
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\ServiceProvider;
+    use Illuminate\Validation\Rules\Password;
 
     class AppServiceProvider extends ServiceProvider
     {
@@ -92,5 +93,10 @@
                         ->debug('whenRequestLifecycleIsLongerThan:'.request()?->url());
                 }
             );
+
+            Password::defaults(function () {
+                return Password::min(8);
+                //->
+            });
         }
     }
