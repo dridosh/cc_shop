@@ -2,7 +2,7 @@
 @section('title','Вход в аккаунт')
 
 @section('content')
-    <x-forms.auth-forms title="Вход в аккаунт"
+    <x-forms.auth-forms title="Вход в аккаунт Окна для Вас"
                         action="{{ route('signIn') }}"
                         method="POST"
     >

@@ -11,7 +11,7 @@
          *
          * @return void
          */
-        public function test_example()
+        public function testHomePageStatus_200()
         {
             $response = $this->get('/');
 

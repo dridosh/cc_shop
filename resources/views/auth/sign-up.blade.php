@@ -67,7 +67,7 @@
             {{ $message }}
         </x-forms.error>
         @enderror
-        source ~/.bashrc
+
         <x-forms.primary-button>
             Зарегистрироваться
         </x-forms.primary-button>
