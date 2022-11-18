@@ -11,10 +11,18 @@
          *
          * @return void
          */
-        public function testHomePageStatus_200()
-        {
-            $response = $this->get('/');
 
+
+//        public function testHomePageStatus_200()
+//        {
+//            $response = $this->get('/');
+//            $response->assertStatus(200);
+//        }
+
+        public function testHomePageStatus_200(): void
+        {
+            $response = $this->get(route('home'));
             $response->assertStatus(200);
         }
+
     }

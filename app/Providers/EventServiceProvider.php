@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Events\CommentCreated;
-use App\Listeners\NewCommentEmailNotification;
 use App\Listeners\SendEmailNewUserListener;
 use App\Models\Product;
 use App\Observers\ProductObserver;
@@ -14,13 +12,13 @@ class EventServiceProvider extends ServiceProvider
 {
 
     protected $listen = [
-        Registered::class     => [
+        Registered::class => [
             // SendEmailVerificationNotification::class,
             SendEmailNewUserListener::class,
         ],
-        CommentCreated::class => [
-            NewCommentEmailNotification::class,
-        ],
+        //        CommentCreated::class => [
+        //            NewCommentEmailNotification::class,
+        //        ],
 
     ];
 
